@@ -1,7 +1,7 @@
 import usocket
 import os
 import gc
-
+#version 1.0.2
 
 class OTAUpdater:
 
