@@ -1,1 +1,96 @@
-v1.0.1
+{
+    "Delay":
+    {
+        "BeltDetection" : 420,
+        "FaceRecognition" : 660,
+        "PeopleCount" : 660,
+        "Event" : 180
+    },
+    "Cameras":
+    {
+        "Cam1":
+        {
+            "Name" : "Cabin",
+            "Username" : "admin",
+            "Password" : "poli25118",
+            "CamIP" : "192.168.200.202",
+            "gst_location" : "rtspsrc do-timestamp=true is_live=true location=rtsp://admin:poli25118@192.168.200.202 latency=0 ! queue ! application/x-rtp, media=video,framerate=10,encoding--name=H264, width=640, height=480 ! rtph264depay ! avdec_h264  ! mix.sink_1  ",
+            "Status" : 0
+        },
+        "Cam2":
+        {
+            "Name" : "Road",
+            "Username" : "admin",
+            "Password" : "poli25118",
+            "CamIP" : "192.168.200.201",
+            "gst_location" : "rtspsrc do-timestamp=true is_live=true location=rtsp://admin:poli25118@192.168.200.201 latency=0 ! queue ! application/x-rtp, media=video,framerate=10,encoding--name=H264, width=640, height=480 ! rtph264depay ! avdec_h264  ! videoconvert ! videoscale ! video/x-raw,width=320 ! mix.sink_2  ",
+            "Status" : 0
+        },
+        "Cam3":
+        {
+            "Name" : "Driver",
+            "Username" : "admin",
+            "Password" : "poli25118",
+            "CamIP" : "192.168.200.203",
+            "gst_location" : "rtspsrc do-timestamp=true is_live=true location=rtsp://admin:poli25118@192.168.200.203 latency=0 ! queue ! application/x-rtp, media=video,framerate=10,encoding--name=H264, width=640, height=480 ! rtph264depay ! avdec_h264  ! videoconvert ! videoscale ! video/x-raw,width=320 ! mix.sink_3  ",
+            "Status" : 0
+        },
+        "RouterIP" : "192.168.200.1",
+        "Count" : 3
+    },
+    "GPS":
+        {
+            "PortGSM" :"/dev/ttyUSB2",
+            "Port" :"/dev/ttyUSB1",
+            "PortNum":"5017",
+            "Dbpath":"db/mydb.db",
+            "ServerIP":"166.62.89.209",
+            "ExceptionPortNum":6005
+
+
+        },
+    "DeviceHealth":
+       {
+         "PumpTime":60,
+         "PortGSM" :"/dev/ttyUSB2",
+         "Port" :"/dev/ttyUSB1",
+         "PortNum":"5017",
+         "GSMInterface":"wwp0s20u1u1i4"
+
+         
+       },
+    "AzureUpload":
+       {
+        "Dbpath":"db/mydb.db",
+        "BlobVideoPath":"videos",
+        "BlobXMLPath":"xmlfiles",
+        "PatternXML":".xml",
+        "PatternVideo":".mp4",
+        "ContainerName":"/angeltest",
+        "LocalVideoPath":"video_FTP/",
+        "LocalXmlPath":"xml_IP/",
+        "STORAGE_URL":"sigsenzdemo.blob.core.windows.net",
+        "sas_url":"sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-02-28T12:06:16Z&st=2019-02-05T04:06:16Z&spr=https&sig=B4I9IrvpSGKpzVNIzxlxjYevTNVTILwKZyLPQGIPyWA%3D",
+        "UploadLogPath":"log/UploadTime.log", 
+        "XmlLogPath":"log/XML.log",
+        "WaitTime":30
+       },
+    "EventUpload":
+       {
+           "TrigerTime":10,
+           "Dbpath":"db/mydb.db"
+       },
+
+    "DeviceId" : "B2011002457" ,
+    "GST" : "gst-launch-1.0 -e videomixer name=mix sink_1::xpos=0 sink_1::ypos=0 sink_2::xpos=640 sink_2::ypos=0 sink_3::xpos=640 sink_3::ypos=240 ",
+    "Encoder" : "x264enc pass=5 quantizer=25 speed-preset=6",
+    "Sink" : "splitmuxsink",
+    "VideoFormat" : ".mp4",
+    "MaxFileTime" : "max-size-time=69000000000",
+    "RecordPath"  : "videos_IP/",
+    "AzurePath"   : "video_FTP/",
+    "CameraSetTime": 60,
+    "CameraPingTime":30,
+    "CameraRestartTime":60,
+    "RecordLogPath":"log/Record.log"
+}
